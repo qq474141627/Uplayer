@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:padding="10dp"
+    android:background="@color/background">
+
+        <LinearLayout
+        android:id="@+id/show_movie_info_ll"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical" >
+        
+    <RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/show_movie_info_img"
+                android:layout_width="100dp"
+                android:layout_height="145dp"
+                android:scaleType="fitXY"/>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:orientation="vertical" >
+                
+            <TextView
+                    android:id="@+id/show_movie_genre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/listview_text"
+                    android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/show_movie_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:textColor="@color/listview_text"
+                    android:textSize="15sp" />
+
+                
+                 <TextView
+                    android:id="@+id/show_movie_director"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textColor="@color/listview_text"
+                    android:textSize="15sp" />
+                 
+                 <TextView
+                    android:id="@+id/show_movie_performer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:textColor="@color/listview_text"
+                    android:textSize="15sp" />
+                 
+                 <TextView
+                     android:layout_marginTop="10dp"
+                   android:id="@+id/text_favorite_count"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:textColor="@color/greentext2"
+                   android:textSize="15sp" />
+              
+            </LinearLayout>
+        </LinearLayout>
+        <TextView
+                android:id="@+id/show_movie_info_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="40dp"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="65dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            
+            <TextView
+            android:id="@+id/btn_play"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/btn_play_select"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/listview_text"
+            android:gravity="center"
+            android:textSize="10sp" />
+            
+            <View
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/vertical_line"/>
+            
+            <TextView
+            android:id="@+id/btn_download"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/btn_download_select"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/listview_text"
+            android:gravity="center"
+            android:textSize="10sp" />
+            
+            <View
+            android:layout_width="1dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/vertical_line"/>
+            
+            <TextView
+            android:id="@+id/btn_like"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/btn_like_select"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/listview_text"
+            android:gravity="center"
+            android:textSize="10sp" />
+            </LinearLayout>
+        
+        </LinearLayout>
+
+        <LinearLayout 
+    android:id="@+id/ll_viewPager"
+    android:layout_marginTop="10dp"
+    android:layout_below="@+id/show_movie_info_ll"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <RadioGroup
+        android:id="@+id/bar_radio"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+        
+        <RadioButton  
+            android:id="@+id/tv_guid1"  
+            style="@style/main_radio_botton2"
+            android:checked="true"
+            android:text="影片介绍"   />  
+  
+        <RadioButton  
+            android:id="@+id/tv_guid2"  
+            style="@style/main_radio_botton2"
+            android:text="最新动态"/> 
+            
+        <RadioButton  
+            android:id="@+id/tv_guid3"  
+            style="@style/main_radio_botton2"
+            android:text="猜你喜欢"   /> 
+    </RadioGroup>  
+    
+    <include layout="@layout/viewpager"/>
+  </LinearLayout>
+</RelativeLayout>

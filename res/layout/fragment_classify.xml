@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <GridView
+    android:id="@+id/classify_grid"  
+    android:paddingTop="15dp"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:verticalSpacing="0.5dp"  
+    android:listSelector="#f0eff5"
+    android:cacheColorHint="#00000000"
+    android:horizontalSpacing="0.5dp"
+    android:gravity="center"  
+    android:numColumns="3" />
+
+</LinearLayout>

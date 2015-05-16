@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.opar.mobile.uplayer.view.MyGridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/grid_num"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:numColumns="5"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="10dp"
+    android:fadingEdge="none" 
+    android:verticalSpacing="10dp"
+    android:cacheColorHint="@color/transparent"
+    />

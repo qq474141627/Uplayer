@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layout_margin="30dp"
+    android:background="@color/background">
+    
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:textSize="17sp"
+        android:paddingLeft="10dp"
+        android:gravity="center_vertical"
+        android:textColor="@color/greentext3"
+        android:text="选集播放"/>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:background="@color/greentext3"/>
+    
+    <include layout="@layout/listview"
+        android:divider="@color/search_key_divider"
+    android:dividerHeight="0.5dp"/>
+
+</LinearLayout>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:orientation="vertical">
+
+    <com.youku.player.base.YoukuPlayerView
+        android:id="@+id/full_holder"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+    </com.youku.player.base.YoukuPlayerView>
+    
+    <RelativeLayout 
+        android:id="@+id/video_detail_rl"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:visibility="gone"
+        android:padding="8dp"
+        android:layout_margin="8dp">
+    
+        <TextView 
+        android:id="@+id/video_detail_title"
+        android:textColor="@color/listview_text1"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="5dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+        <TextView 
+         android:id="@+id/video_detail_content"
+        android:textColor="@color/listview_text4"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="14sp"
+        android:layout_below="@+id/video_detail_title"
+        android:drawableLeft="@drawable/icon_video_detail_play"
+        android:paddingLeft="3dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="5dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+        
+        <TextView 
+        android:id="@+id/video_detail_rate"
+        android:textColor="@color/listview_text1"
+        android:textSize="16sp"
+        android:layout_alignParentRight="true"
+        android:layout_alignBaseline="@+id/video_detail_title"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:background="@drawable/ic_launcher"/>
+        
+        <TextView 
+        android:id="@+id/video_detail_up"
+        android:textColor="@color/listview_text4"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textSize="14sp"
+        android:layout_alignBaseline="@+id/video_detail_content"
+        android:drawableLeft="@drawable/detail_up_select"
+        android:paddingLeft="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"/>
+
+    </RelativeLayout>
+    
+    <include layout="@layout/listview"
+    android:divider="@color/transparent"
+    android:dividerHeight="0.5dp"
+    android:cacheColorHint="@color/transparent"/>
+
+ 
+
+</LinearLayout>

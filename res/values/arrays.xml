@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="mine">
+        <item >收藏</item>
+        <item >离线视频</item>
+        <item >播放记录</item>
+        <item >本地视频</item>
+        <item >消息</item>
+        <item >好友</item>
+        <item >我的订阅</item>
+        <item >好友动态</item>
+    </string-array>
+    
+    <string-array name="classify_big">
+        <item >电影</item>
+        <item >电视剧</item>
+        <item >综艺</item>
+        <item >动漫</item>
+    </string-array>
+    
+    <string-array name="classify">
+        <item >电影</item>
+        <item >电视剧</item>
+        <item >综艺</item>
+        <item >动漫</item>
+        <item >资讯</item>
+        <item >音乐</item>
+        <item >娱乐</item>
+        <item >搞笑</item>
+        <item >生活</item>
+        <item >游戏</item>
+        <item >体育</item>
+        <item >时尚</item>
+        <item >旅游</item>
+        <item >汽车</item>
+        <item >亲子</item>
+        <item >科技</item>
+    </string-array>
+    
+    <string-array name="dianying">
+        <item >淘片</item>
+        <item >今日热播</item>
+        <item >最新上映</item>
+        <item >历史最多</item>
+        <item >爱情</item>
+        <item >喜剧</item>
+        <item >动作</item>
+        <item >热评榜</item>
+        <item >恐怖</item>
+        <item >剧情</item>
+        <item >科幻</item>
+        <item >战争</item>
+        <item >悬疑</item>
+        <item >动画</item>
+        <item >犯罪</item>
+        <item >惊悚</item>
+        <item >纪录片</item>
+    </string-array>
+    <string-array name="dianshiju">
+        <item >淘片</item>
+        <item >今日热播</item>
+        <item >最近更新</item>
+        <item >好评榜</item>
+        <item >韩剧</item>
+        <item >大陆</item>
+        <item >美剧</item>
+        <item >港剧</item>
+        <item >日剧</item>
+        <item >台剧</item>
+        <item >英剧</item>
+        <item >评分榜</item>
+        <item >泰剧</item>
+    </string-array>
+
+     <string-array name="zongyi">
+        <item >淘片</item>
+        <item >今日热播</item>
+        <item >好评榜</item>
+        <item >娱乐</item>
+        <item >搞笑</item>
+        <item >真人秀</item>
+        <item >选秀</item>
+        <item >音乐</item>
+        <item >脱口秀</item>
+        <item >生活</item>
+        <item >美食</item>
+        <item >时尚</item>
+        <item >益智</item>
+        <item >访谈</item>
+        <item >少儿</item>
+    </string-array>
+    
+     <string-array name="dongman">
+         <item >淘片</item>
+        <item >今日热播</item>
+        <item >好评榜</item>
+        <item >剧情</item>
+        <item >冒险</item>
+        <item >科幻</item>
+        <item >搞笑</item>
+        <item >美少女</item>
+        <item >魔法</item>
+        <item >忍者</item>
+        <item >神魔</item>
+        <item >战争</item>
+        <item >教育</item>
+        <item >益智</item>
+        <item >童话</item>
+        <item >青春</item>
+        <item >励志</item>
+        <item >竞技</item>
+    </string-array>
+    
+     <string-array name="zixun">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >社会资讯</item>
+        <item >科技资讯</item>
+        <item >生活资讯</item>
+        <item >时政资讯</item>
+        <item >军事资讯</item>
+        <item >财经资讯</item>
+        <item >法制</item>
+    </string-array>
+    
+     <string-array name="yule">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >娱乐资讯</item>
+        <item >电视资讯</item>
+        <item >电影资讯</item>
+        <item >音乐资讯</item>
+        <item >颁奖礼</item>
+        <item >戏剧</item>
+        <item >曲艺</item>
+        <item >艺术</item>
+        <item >魔术</item>
+    </string-array>
+    
+     <string-array name="tiyu">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >体育资讯</item>
+        <item >篮球</item>
+        <item >CBA</item>
+        <item >足球</item>
+        <item >英超</item>
+        <item >极限运动</item>
+        <item >自行车</item>
+        <item >轮滑</item>
+        <item >滑板</item>
+        <item >武术</item>
+        <item >格斗</item>
+        <item >赛车</item>
+        <item >网球</item>
+        <item >田径</item>
+        <item >射击</item>
+        <item >健身</item>
+        <item >棋牌</item>
+        <item >奥运会</item>
+        <item >欧洲杯</item>
+    </string-array>
+    
+     <string-array name="qiche">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >车讯</item>
+        <item >购车</item>
+        <item >试驾</item>
+        <item >新车</item>
+        <item >国产车</item>
+        <item >车女郎</item>
+        <item >养车</item>
+        <item >修车</item>
+        <item >改装</item>
+        <item >装饰</item>
+        <item >赛车</item>
+        <item >赛车</item>
+        <item >名车</item>
+        <item >二手车</item>
+        <item >飙车</item>
+    </string-array>
+    
+     <string-array name="keji">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >数码</item>
+        <item >IT</item>
+        <item >手机</item>
+        <item >笔记本</item>
+        <item >DC/DV</item>
+        <item >MP3/MP4</item>
+        <item >数字家电</item>
+        <item >GPS</item>
+        <item >游戏机</item>
+    </string-array>
+    
+     <string-array name="youxi">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >游戏资讯</item>
+        <item >网络游戏</item>
+        <item >电子竞技</item>
+        <item >单机游戏</item>
+        <item >魔兽世界</item>
+        <item >地下城与勇士</item>
+        <item >英雄联盟</item>
+        <item >游戏音乐</item>
+        <item >手机游戏</item>
+    </string-array>
+    
+     <string-array name="shenghuo">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >绝活</item>
+        <item >美食</item>
+        <item >聚会</item>
+        <item >宠物</item>
+        <item >居家</item>
+        <item >理财</item>
+        <item >健康</item>
+        <item >家居</item>
+        <item >女性</item>
+    </string-array>
+    
+     <string-array name="shishang">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >美容</item>
+        <item >修身</item>
+        <item >服装服饰</item>
+        <item >时尚购物</item>
+        <item >潮人</item>
+        <item >情感星座</item>
+    </string-array>
+    
+     <string-array name="lvyou">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >城市</item>
+        <item >户外运动</item>
+        <item >节庆活动</item>
+        <item >自然景点</item>
+        <item >人文景点</item>
+        <item >游轮岛屿</item>
+        <item >乡村古镇</item>
+        <item >旅游用品</item>
+        <item >交通住宿</item>
+        <item >旅游业界</item>
+        <item >出境游</item>
+        <item >国内游</item>
+        <item >攻略指南</item>
+    </string-array>
+    
+     <string-array name="qinzi">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >育儿</item>
+        <item >宝宝秀</item>
+        <item >早教</item>
+        <item >怀孕</item>
+        <item >搞笑儿童</item>
+    </string-array>
+    
+    <string-array name="gaoxiao">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+        <item >恶搞短片</item>
+        <item >搞笑自拍</item>
+        <item >搞笑动物</item>
+    </string-array>
+    
+    <string-array name="yinyue">
+        <item >今日热点</item>
+        <item >最新更新</item>
+        <item >本周排行</item>
+    </string-array>
+    
+</resources>

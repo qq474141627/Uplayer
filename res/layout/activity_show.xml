@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    
+    <HorizontalScrollView
+        android:id="@+id/hscroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:scrollbars="none" >
+        <RadioGroup 
+            android:id="@+id/bar_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+        </RadioGroup>
+    </HorizontalScrollView>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/actionbar_bottom_line"/>
+    
+    <LinearLayout 
+    android:id="@+id/ll_select"
+    android:layout_width="fill_parent"
+    android:layout_height="42dp"
+    android:visibility="gone"
+    android:orientation="vertical">
+   <RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_weight="1"
+    android:orientation="horizontal" >
+   <TextView 
+    android:id="@+id/selectInfo"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:layout_marginLeft="10dp"
+    android:gravity="center"
+    android:text="全部"
+    android:textColor="#434343"
+    android:textSize="14sp"/>
+   
+   <TextView 
+    android:id="@+id/select"
+    android:layout_width="55dp"
+    android:layout_height="28dp"
+    android:layout_marginRight="10dp"
+    android:text="筛选"
+    android:layout_alignParentRight="true"
+    android:layout_centerVertical="true"
+    android:gravity="center"
+    android:textColor="#303030"
+    android:background="@drawable/rounded_select_bt"
+    android:textSize="16sp"/>
+   </RelativeLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/actionbar_bottom_line"/>
+   </LinearLayout>
+   
+    <RelativeLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <include layout="@layout/viewpager"/>
+    <include layout="@layout/layout_selection"
+        android:visibility="gone"/>
+    
+    </RelativeLayout>
+
+</LinearLayout>

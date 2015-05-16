@@ -1,0 +1,73 @@
+   <LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="@color/white"
+    android:padding="10dp"> 
+    
+       <ImageView  
+    android:id="@+id/userIcon"
+    android:layout_width="40dp"
+    android:layout_height="40dp"
+    android:layout_marginTop="5dp"
+    android:src="@drawable/icon_myinfo_default"
+    android:scaleType="fitXY"/>
+    <LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:orientation="vertical">    
+     <RelativeLayout  
+    android:layout_width="fill_parent"
+    android:layout_height="18dp"> 
+    <TextView  
+    android:id="@+id/userName"
+    android:textSize="14sp"
+    android:layout_centerVertical="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/greentext2"/>
+    
+    <ImageView  
+    android:id="@+id/userSex"
+    android:layout_width="16dp"
+    android:layout_height="16dp"
+    android:layout_centerVertical="true"
+    android:layout_toRightOf="@+id/userName"
+    android:scaleType="fitXY"/>
+    
+    <TextView  
+    android:id="@+id/time"
+    android:textSize="9sp"
+    android:layout_centerVertical="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/listview_text"
+    android:layout_alignParentRight="true"/>
+      </RelativeLayout>
+    
+      <TextView  
+    android:id="@+id/content"
+    android:textSize="14sp"
+    android:layout_marginTop="3dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/listview_text2"
+    android:lineSpacingMultiplier="1.2"
+    />
+      
+     <TextView  
+    android:id="@+id/contentOther"
+    android:textSize="14sp"
+    android:layout_margin="5dp"
+    android:padding="5dp"
+    android:background="#fafafc"
+    android:visibility="gone"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textColor="@color/listview_text2"
+    android:lineSpacingMultiplier="1.2"
+    />
+     
+   </LinearLayout>
+</LinearLayout>

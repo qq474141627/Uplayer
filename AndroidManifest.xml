@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.opar.mobile.uplayer"
+    android:versionCode="1"
+    android:versionName="1.0.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14" android:targetSdkVersion="19" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <!-- uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" /-->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+
+    <!-- <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW"/> -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <application
+        android:name="com.opar.mobile.uplayer.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/StartTheme"
+        android:hardwareAccelerated="true">
+        <activity
+            android:name="com.opar.mobile.aplayer.ui.MainActivity"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.opar.mobile.aplayer.ui.Activity_Start"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.opar.mobile.aplayer.ui.Activity_ShowInfo"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.opar.mobile.aplayer.ui.Activity_SelectNum"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait">
+        </activity>
+         <activity
+            android:name="com.opar.mobile.aplayer.ui.Activity_Search"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.opar.mobile.aplayer.ui.Activity_Search_Show"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait">
+        </activity>
+         <activity
+            android:name="com.opar.mobile.aplayer.ui.Activity_Show"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.opar.mobile.aplayer.ui.Activity_Playlist"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name="com.opar.mobile.aplayer.ui.Activity_Video"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity 
+            android:name="com.opar.mobile.aplayer.ui.Activity_VideoPlayer"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:exported="true">
+        </activity>
+        <activity 
+            android:name="com.opar.mobile.aplayer.ui.Activity_Player"
+            android:theme="@style/AppTheme"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name="com.opar.mobile.aplayer.ui.HtmlPlayer"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme">
+        </activity>
+        <activity
+            android:name="com.opar.mobile.aplayer.ui.Dialog_Search_Category"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialog">
+        </activity>
+        <activity
+            android:name="com.opar.mobile.aplayer.ui.Dialog_Show_Num"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialog">
+        </activity>
+        
+        
+       <activity
+            android:name="com.opar.mobile.uplayer.MainActivity2"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="portrait">
+        </activity> 
+        <!-- 播放界面demo -->
+        <activity 
+            android:name="com.opar.mobile.uplayer.PlayerActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:exported="true">
+        </activity>
+        <!-- 已经缓存的视频界面demo -->
+        <activity
+            android:name="com.opar.mobile.uplayer.CachedActivity"
+            android:launchMode="singleTask"            
+            />
+        <!-- 正在缓存的视频展示界面demo -->
+        <activity
+            android:name="com.opar.mobile.uplayer.CachingActivity"
+            android:launchMode="singleTask"
+            />        
+        <!-- 以下两个为下载时需要的添加的Service -->
+       <service
+            android:name="com.youku.service.download.DownloadService"
+            android:label="Youku Download Service"
+            android:process=":download" >
+            <intent-filter android:priority="1000" >
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.youku.service.acc.AcceleraterService"
+            android:process=":accelerater" >
+            <intent-filter android:priority="1000" >
+            </intent-filter>
+        </service>
+        
+        <!-- 以下为增加登陆功能需要添加的信息 -->
+        <activity   
+            android:name="com.youku.login.activity.LoginRegistCardViewDialogActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Dialog"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.youku.login.sns.AuthorizationLoginActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop" > 
+        </activity>
+        <activity
+            android:name="com.youku.login.Zxing.CaptureActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter> 
+                <action android:name="com.youku.action.QRCODE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity> 
+        <activity
+            android:name="com.youku.login.activity.WebViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"> 
+            <intent-filter>
+                <action android:name="com.youku.action.YoukuWebview" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
+        <!-- client_id及client_secret配置 -->
+        <meta-data android:name="client_id" android:value="426249cfc92d3b67"/>
+        <meta-data android:name="client_secret" android:value="be6f89bac1ba5edff6eb5bd1b3675f1d"/>
+        <meta-data android:value="54f5dfcbfd98c520c4000652" android:name="UMENG_APPKEY"></meta-data>
+        <meta-data android:value="UM" android:name="UMENG_CHANNEL"/>
+    </application>
+
+</manifest>

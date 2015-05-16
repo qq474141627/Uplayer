@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ <!-- 谷歌    google        91市场    91    
+                 腾讯应用    QQ         3G安卓市场   3G  
+                 安卓市场    hiapk      百度应用  baidu 
+               机锋市场    gfan        搜狐应用  sohu 
+                安智市场    goapk       网易应用   163 
+               掌上应用汇    appChina   UC应用商店   UC
+                 木蚂蚁市场    mumayi    当乐游戏中心   dangle 
+                 优亿市场   eoe         三星乐园   samsung 
+      N多市场    nduo       移动MM商店   mmw 
+                飞流下载    feiliu      小米市场   xiaomi 
+                 十字猫商店    crossmo   联想乐商店   lenovo 
+                 华为智汇云    huawei    NearMe商店   nearme 
+     -->
+
+    <string name="app_name">微看视频</string>
+    <string name="version_name">1.0.0</string>
+    <string name="exit_click">再按一次退出程序</string>
+    <string name="video_search">搜索视频</string>
+    <string name="video_down">下载该视频</string>
+    <string name="search_hint">请输入关键词</string>
+    <string name="play">播放</string>
+    <string name="loding">加载中&#8230;</string>
+    <string name="pull_to_refresh_footer_release_label">松开后加载</string>
+    <string name="pull_to_refresh_footer_pull_label">上拉加载更多</string>
+    <string name="pull_to_refresh_footer_refreshing_label">努力加载中...</string>
+    <string name="pull_to_refresh_release_label">松开后刷新</string>
+    <string name="pull_to_refresh_pull_label">下拉刷新</string>
+    <string name="pull_to_refresh_refreshing_label">正在刷新...</string>
+    <string name="NONETWORK">未检测到网络</string>
+    <string name="HTTP_IOEXCEPTION">网络请求异常</string>
+    <string name="NO_DATA_RETURN">获取数据失败,请检查网络</string>
+    <string name="NO_SOURCE_FOUND">暂无数据</string>
+    <string name="NO_MORE_DATE">暂无更多数据</string>
+    
+    <string name="sure">确定</string>
+    
+    <string name="selectnum">选集</string>
+    <string name="movieinfo">详情</string>
+    <string name="comment">评论</string>
+    <string name="youlike">猜你喜欢</string>
+    <string name="share">分享</string>
+    <string name="order">排序</string>
+    <string name="type">类型</string>
+    <string name="area">国家/地区</string>
+    <string name="year">上映年份</string>
+    <string name="order_2">↓倒序</string>
+    <string name="order_1">↑正序</string>
+  
+    <!-- 电视剧分类 -->
+    <string name="text_tj">今日热播</string>
+    <string name="tv_text_zx">最近更新</string>
+    <string name="tv_text_zr">好评榜</string>
+    <string name="tv_text_hj">韩剧</string>
+    <string name="tv_text_dl">大陆</string>
+    <string name="tv_text_mj">美剧</string>
+    <string name="tv_text_gj">港剧</string>
+    <string name="tv_text_rj">日剧</string>
+    <string name="tv_text_tj">台剧</string>
+    <string name="tv_text_yj">英剧</string>
+    <string name="tv_text_hp">评分榜</string>
+    <string name="tv_text_taij">泰剧</string>
+    <!-- 电影分类 -->
+    <string name="tv_text_aq">爱情</string>
+    <string name="tv_text_xj">喜剧</string>
+    <string name="tv_text_dz">动作</string>
+    <string name="tv_text_kb">恐怖</string>
+    <string name="tv_text_jq">剧情</string>
+    <string name="tv_text_kh">科幻</string>
+    <string name="tv_text_wd">微电影</string>
+    <string name="tv_text_zz">战争</string>
+    <string name="tv_text_xy">悬疑</string>
+    <string name="tv_text_dh">动画</string>
+    <string name="tv_text_fz">犯罪</string>
+    <string name="tv_text_js">惊悚</string>
+    <string name="tv_text_jl">纪录片</string>
+    <!-- 动漫分类 -->
+    <string name="dm_text_ph">好评榜</string>
+    <string name="dm_text_jq">剧情</string>
+    <string name="dm_text_mx">冒险</string>
+    <string name="dm_text_kh">科幻</string>
+    <string name="dm_text_gx">搞笑</string>
+    <string name="dm_text_msn">美少女</string>
+    <string name="dm_text_mf">魔法</string>
+    <string name="dm_text_rz">忍者</string>
+    <string name="dm_text_sm">神魔</string>
+    <string name="dm_text_zz">战争</string>
+    <string name="dm_text_jy">教育</string>
+    <string name="dm_text_yz">益智</string>
+    <string name="dm_text_th">童话</string>
+    <string name="dm_text_qc">青春</string>
+    <string name="dm_text_lz">励志</string>
+    <string name="dm_text_jj">竞技</string>
+    <!-- 综艺分类 -->
+    <string name="zy_text_zr">好评榜</string>
+    <string name="zy_text_yl">娱乐</string>
+    <string name="zy_text_gx">搞笑</string>
+    <string name="zy_text_zrx">真人秀</string>
+    <string name="zy_text_xx">选秀</string>
+    <string name="zy_text_yy">音乐</string>
+    <string name="zy_text_tk">脱口秀</string>
+    <string name="zy_text_sh">生活</string>
+    <string name="zy_text_ms">美食</string>
+    <string name="zy_text_ss">时尚</string>
+    <string name="zy_text_yz">益智</string>
+    <string name="zy_text_ft">访谈</string>
+    <string name="zy_text_se">少儿</string>
+    <!-- 音乐分类 -->
+    <string name="yy_text_zr">好评榜</string>
+    <string name="yy_text_lx">流行</string>
+    <string name="yy_text_yg">摇滚</string>
+    <string name="yy_text_wq">舞曲</string>
+    <string name="yy_text_dz">电子</string>
+    <string name="yy_text_hi">HIP-HOP</string>
+    <string name="yy_text_rb">R&amp;B</string>
+    <string name="yy_text_ld">拉丁</string>
+    <string name="yy_text_js">爵士</string>
+    <string name="yy_text_lg">雷鬼</string>
+    <string name="yy_text_qy">轻音乐</string>
+    <string name="yy_text_xc">乡村</string>
+    <string name="yy_text_mz">民族</string>
+    <!-- 记录片分类 -->
+    <string name="jl_text_sh">社会</string>
+    <string name="jl_text_ls">历史</string>
+    <string name="jl_text_wh">文化</string>
+    <string name="jl_text_zr">自然</string>
+    <string name="jl_text_rw">人物</string>
+    <string name="jl_text_js">军事</string>
+    <string name="jl_text_kj">科技</string>
+    <string name="jl_text_tx">探险</string>
+    <string name="jl_text_ly">旅游</string>
+    <string name="jl_text_xz">刑侦</string>
+    <string name="jl_text_gj">古迹</string>
+    <string name="jl_text_yz">宇宙</string>
+    <string name="jl_text_cj">财经</string>
+ 
+      <!-- 节目分类 -->
+      <string name="Movies">电影</string> 
+      <string name="TV">电视剧</string> 
+      <string name="Variety">综艺</string> 
+      <string name="Music">音乐</string> 
+      <string name="Anime">动漫</string> 
+      <string name="Education">教育</string> 
+      <string name="Sports">体育</string> 
+      <string name="Documentary">纪录片</string> 
+      
+      <!-- main tab -->
+      <string name="main_tab_mine">我的</string>
+      <string name="main_tab_catagory">专辑</string>
+      <string name="main_tab_classify">分类</string>
+      
+      
+      
+    
+</resources> 

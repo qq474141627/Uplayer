@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/layout_selection"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@color/white"
+  android:scrollbars="none">
+<LinearLayout
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical"
+  android:paddingLeft="10dp"
+  android:paddingRight="10dp">
+                
+  <TextView 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:text="@string/order"
+    android:layout_marginTop="20dp"
+    android:textSize="12sp"
+    android:textColor="@color/listview_text3"/>  
+    
+   <com.opar.mobile.uplayer.view.MyGridView 
+    android:id="@+id/MyGridView1"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:numColumns="5"
+    android:layout_marginTop="10dp"
+    android:verticalSpacing="10dp"
+    android:horizontalSpacing="10dp"
+    android:fadingEdge="none" 
+    android:cacheColorHint="@color/transparent"
+    />
+   
+   <TextView 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:layout_marginTop="20dp"
+    android:text="@string/type"
+    android:textSize="12sp"
+    android:textColor="@color/listview_text3"/>  
+       
+   <com.opar.mobile.uplayer.view.MyGridView 
+    android:id="@+id/MyGridView2"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:numColumns="5"
+    android:layout_marginTop="10dp"
+    android:verticalSpacing="10dp"
+    android:horizontalSpacing="10dp"
+    android:fadingEdge="none" 
+    android:cacheColorHint="@color/transparent"
+    />
+   
+   <TextView 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:layout_marginTop="20dp"
+    android:text="@string/area"
+    android:textSize="12sp"
+    android:textColor="@color/listview_text3"/>  
+       
+   <com.opar.mobile.uplayer.view.MyGridView 
+    android:id="@+id/MyGridView3"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:numColumns="5"
+    android:layout_marginTop="10dp"
+    android:verticalSpacing="10dp"
+    android:horizontalSpacing="10dp"
+    android:fadingEdge="none" 
+    android:cacheColorHint="@color/transparent"
+    />
+   
+   <TextView 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" 
+    android:layout_marginTop="20dp"
+    android:text="@string/year"
+    android:textSize="12sp"
+    android:textColor="@color/listview_text3"/>  
+       
+   <com.opar.mobile.uplayer.view.MyGridView 
+    android:id="@+id/MyGridView4"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:numColumns="5"
+    android:layout_marginTop="10dp"
+    android:verticalSpacing="10dp"
+    android:horizontalSpacing="10dp"
+    android:fadingEdge="none" 
+    android:cacheColorHint="@color/transparent"
+    />
+   
+   <RelativeLayout
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:paddingTop="25dp"
+  android:paddingBottom="25dp"
+  android:paddingRight="45dp"
+  android:paddingLeft="45dp"
+  android:orientation="horizontal">
+  <Button 
+    android:id="@+id/cancle"
+    android:layout_width="80dp"
+    android:layout_height="30dp" 
+    android:text="@string/cancel"
+    android:textSize="16sp"
+    android:gravity="center"
+    android:background="@drawable/btn_selection_search_p"
+    android:textColor="@color/white"/>  
+     <Button 
+    android:id="@+id/ok"
+    android:layout_width="80dp"
+    android:layout_height="30dp" 
+    android:text="@string/sure"
+    android:textSize="16sp"
+    android:gravity="center"
+    android:background="@drawable/btn_selection_search_p"
+    android:layout_alignParentRight="true"
+    android:textColor="@color/white"/>  
+    </RelativeLayout>
+    
+ </LinearLayout>
+</ScrollView>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="StartTheme" parent="AppBaseTheme">
+        <item name="android:itemBackground">@drawable/ic_menu</item> 
+        <item name="android:actionBarStyle">@style/my_actionbar_style</item>
+        <item name="homeAsUpIndicator">@drawable/jiantou2</item>
+        <item name="android:homeAsUpIndicator">@drawable/jiantou2</item>
+        <item name="android:actionButtonStyle">@style/barMenuStyle</item> 
+    </style>
+    
+    <style name="my_actionbar_style" parent="android:Widget.ActionBar">
+        <item name="android:background">@color/actionbar_color</item>
+        <item name="android:titleTextStyle">@style/titleTextStyle</item>
+        <item name="android:displayOptions">homeAsUp|showTitle</item>
+        <item name="displayOptions">homeAsUp|showTitle</item>
+    </style>
+    
+    <style name="barMenuStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Menu">
+        <item name="android:background">@drawable/ic_menu</item>
+        <item name="android:gravity">center</item> 
+        <item name="android:minWidth">50dp</item> 
+        <item name="android:paddingLeft">10dp</item> 
+        <item name="android:paddingRight">10dp</item>
+        <item name="dividerVertical">@drawable/vertical_line</item> 
+    </style>
+    
+    <style name="titleTextStyle">
+      <item name="android:textColor">#676767</item>
+      <item name="android:textSize">18sp</item> 
+    </style>
+
+ <style name="Transparent">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
+    </style>
+     <style name="main_radio_botton">
+        <item name="android:button">@null</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/radiobutton</item>
+        <item name="android:layout_width">wrap_content</item>  
+        <item name="android:paddingLeft">10dp</item> 
+        <item name="android:paddingRight">10dp</item>  
+        <item name="android:layout_height">44dp</item>  
+        <item name="android:layout_weight">1.0</item>  
+        <item name="android:gravity">center</item>  
+        <item name="android:background">@drawable/tab_segment_selector</item>
+    </style>
+    
+     <style name="main_radio_botton2">
+        <item name="android:button">@null</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/radiobutton</item>
+        <item name="android:layout_width">wrap_content</item>  
+        <item name="android:paddingLeft">10dp</item> 
+        <item name="android:paddingRight">10dp</item>  
+        <item name="android:layout_height">40dp</item>  
+        <item name="android:layout_weight">1.0</item>  
+        <item name="android:gravity">center</item>  
+        <item name="android:background">@drawable/tab_segment2_selector</item>
+    </style>
+    
+	<style name="main_tab_bottom">
+        <item name="android:textSize">@dimen/bottom_tab_font_size</item>
+        <item name="android:textColor">@color/main_tab_text</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingTop">@dimen/bottom_tab_padding_up</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:drawablePadding">@dimen/bottom_tab_padding_drawable</item>
+        <item name="android:layout_weight">1.0</item>
+    </style>   
+     
+	<style name="MyDialog" parent="@android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item> 
+        <item name="android:windowBackground">@color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+    
+</resources>

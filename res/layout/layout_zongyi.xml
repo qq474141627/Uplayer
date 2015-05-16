@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/bar_rg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/bar_rd1"
+                style="@style/main_radio_botton"
+                android:checked="true"
+                android:text="@string/text_tj" />
+
+            <RadioButton
+                android:id="@+id/bar_rd2"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_zr" />
+
+            <RadioButton
+                android:id="@+id/bar_rd3"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_yl" />
+
+            <RadioButton
+                android:id="@+id/bar_rd4"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_gx" />
+
+            <RadioButton
+                android:id="@+id/bar_rd5"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_zrx" />
+
+            <RadioButton
+                android:id="@+id/bar_rd6"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_xx" />
+
+            <RadioButton
+                android:id="@+id/bar_rd7"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_yy" />
+
+            <RadioButton
+                android:id="@+id/bar_rd8"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_tk" />
+
+            <RadioButton
+                android:id="@+id/bar_rd9"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_sh" />
+
+            <RadioButton
+                android:id="@+id/bar_rd10"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_ms" />
+            
+            <RadioButton
+                android:id="@+id/bar_rd11"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_ss" />
+            
+            <RadioButton
+                android:id="@+id/bar_rd12"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_yz" />
+            
+            <RadioButton
+                android:id="@+id/bar_rd13"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_ft" />
+            
+            <RadioButton
+                android:id="@+id/bar_rd14"
+                style="@style/main_radio_botton"
+                android:text="@string/zy_text_se" />
+
+</RadioGroup>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0EFF5"
+    android:orientation="vertical" >
+
+    <include layout="@layout/viewpager"
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp" />
+
+    <LinearLayout
+        android:id="@+id/console_line_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal" >
+
+        <RadioGroup
+            android:id="@+id/main_tab_group"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#F5F5FA"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/main_tab_mine"
+                style="@style/main_tab_bottom"
+                android:checked="true"
+                android:drawableTop="@drawable/icon_tab_mine_selector"
+                android:text="@string/main_tab_mine" />
+
+            <RadioButton
+                android:id="@+id/main_tab_catagory"
+                style="@style/main_tab_bottom"
+                android:drawableTop="@drawable/icon_tab_categry_selector"
+                android:text="@string/main_tab_catagory" />
+
+            <RadioButton
+                android:id="@+id/main_tab_classify"
+                style="@style/main_tab_bottom"
+                android:drawableTop="@drawable/icon_tab_classify_selector"
+                android:text="@string/main_tab_classify" />
+
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>

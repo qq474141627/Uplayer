@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" 
+    android:padding="5dp">
+    <ImageView 
+        android:layout_width="110dp"
+        android:layout_height="70dp"
+        android:id="@+id/hot_mv_img"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo"
+        />
+    <LinearLayout 
+        android:layout_height="70dp"
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="10dp">
+        <TextView 
+             android:textColor="@color/listview_title"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="17sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:id="@+id/hot_mv_name"
+            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            />
+        <TextView 
+             android:textColor="@color/listview_text"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="13sp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:id="@+id/hot_mv_duration"
+            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            />
+        </LinearLayout>
+      
+</LinearLayout>
