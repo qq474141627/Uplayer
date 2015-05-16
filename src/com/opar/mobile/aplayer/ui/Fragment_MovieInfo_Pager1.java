@@ -3,6 +3,7 @@ package com.opar.mobile.aplayer.ui;
 import java.util.ArrayList;
 
 
+import com.actionbarsherlock.app.SherlockFragment;
 import com.opar.mobile.aplayer.beans.VideoBean;
 import com.opar.mobile.aplayer.ui.adapter.PlayButtonsAdapter;
 import com.opar.mobile.aplayer.util.UplayerConfig;
@@ -20,7 +21,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 
-public class Fragment_MovieInfo_Pager1 extends FragmentBase implements OnItemClickListener{
+public class Fragment_MovieInfo_Pager1 extends SherlockFragment implements OnItemClickListener{
    private View view;
    private MyGridView grid_num;
    private PlayButtonsAdapter adapterNum;
@@ -92,10 +93,5 @@ public class Fragment_MovieInfo_Pager1 extends FragmentBase implements OnItemCli
 			adapterNum.reflash(beans);
 		};
 	};
-	
-	@Override
-	public void onLoad(String obj) {
-		id = obj;
-	}
 	
 }

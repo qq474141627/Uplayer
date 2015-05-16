@@ -2,10 +2,13 @@ package com.opar.mobile.aplayer.ui;
 
 import java.util.ArrayList;
 
+import com.actionbarsherlock.app.SherlockFragment;
 import com.opar.mobile.aplayer.beans.MovieSms;
+import com.opar.mobile.aplayer.beans.ShowBean;
 import com.opar.mobile.aplayer.beans.UserBean;
 import com.opar.mobile.aplayer.ui.adapter.MovieSmsAdapter;
 import com.opar.mobile.aplayer.util.UplayerConfig;
+import com.opar.mobile.aplayer.xml.XmlUtil;
 import com.opar.mobile.uplayer.R;
 import com.opar.mobile.uplayer.asyc.Get_VideoComent_AsyncTask;
 import com.youku.login.widget.YoukuLoading;
@@ -22,13 +25,14 @@ import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.AbsListView.OnScrollListener;
 
-public class Fragment_MovieInfo_Pager4 extends FragmentBase implements OnScrollListener{
+public class Fragment_MovieInfo_Pager4 extends SherlockFragment implements OnScrollListener{
 	private View view;
 	private ListView listView;
 	private MovieSmsAdapter adapter;
 	private int page ;//默认为第一页数据
 	private ArrayList<MovieSms> list;//临时获取的数组
 	private String vid;
+	private boolean hasDate;
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -56,8 +60,14 @@ public class Fragment_MovieInfo_Pager4 extends FragmentBase implements OnScrollL
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 	    super.setUserVisibleHint(isVisibleToUser);
-	    if (isVisibleToUser && !TextUtils.isEmpty(vid)) {
-	    	if(adapter.getCount() == 0){
+	    if (isVisibleToUser && isAdded() && !hasDate) {
+	    	if(TextUtils.isEmpty(vid)){
+	    		ShowBean bean = ((Activity_ShowInfo)getActivity()).getoBean();
+	    		if(bean != null){
+	    			vid = XmlUtil.getVid(bean.getLink());
+	    		}
+	    	}
+	    	if(!TextUtils.isEmpty(vid)){
 	    		YoukuLoading.show(getActivity());
 	    		new Get_VideoComent_AsyncTask(handler, vid,page+1).execute();
 	    	}
@@ -89,6 +99,7 @@ public class Fragment_MovieInfo_Pager4 extends FragmentBase implements OnScrollL
 			YoukuLoading.dismiss();
         	switch (msg.what) {
         	case UplayerConfig.EXEC_NORMOL:
+        		hasDate = true;
         		page++;
         		ArrayList<UserBean> users = (ArrayList<UserBean>)msg.obj;
         		for(int i = 0;i<list.size();i++){
@@ -100,7 +111,7 @@ public class Fragment_MovieInfo_Pager4 extends FragmentBase implements OnScrollL
 				break;
 			case UplayerConfig.NONETWORK:
 				UplayerConfig.showTips(R.string.NONETWORK);
-			        break;
+			    break;
 			case UplayerConfig.NO_DATA_RETURN:
 				UplayerConfig.showTips(R.string.NO_DATA_RETURN);
 				break;
@@ -116,10 +127,4 @@ public class Fragment_MovieInfo_Pager4 extends FragmentBase implements OnScrollL
         };
 	};
 
-	@Override
-	public void onLoad(String obj) {
-		vid = obj;
-	}
-
-			
 }

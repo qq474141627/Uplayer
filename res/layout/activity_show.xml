@@ -32,6 +32,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:layout_weight="1"
+    android:background="@color/white"
     android:orientation="horizontal" >
    <TextView 
     android:id="@+id/selectInfo"
@@ -40,7 +41,7 @@
     android:layout_marginLeft="10dp"
     android:gravity="center"
     android:text="全部"
-    android:textColor="#434343"
+    android:textColor="@color/listview_title"
     android:textSize="14sp"/>
    
    <TextView 
@@ -52,7 +53,7 @@
     android:layout_alignParentRight="true"
     android:layout_centerVertical="true"
     android:gravity="center"
-    android:textColor="#303030"
+    android:textColor="@color/listview_text"
     android:background="@drawable/rounded_select_bt"
     android:textSize="16sp"/>
    </RelativeLayout>

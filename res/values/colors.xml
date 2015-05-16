@@ -21,10 +21,8 @@
     <color name="horizontalbar">#F8F8F8</color>
     <color name="fragment_menu">#DEE1E2</color>
     <color name="titlebar">#459e4a</color>
-    <color name="listview_title">#333333</color>
-    <color name="listview_text">#666666</color>
-    <color name="listview_text1">#676767</color>
-    <color name="listview_text2">#404040</color>
+    <color name="listview_title">#404040</color>
+    <color name="listview_text">#676767</color>
     <color name="listview_text3">#999999</color>
     <color name="listview_text4">#969696</color>
     <color name="up_count">#D9B374</color>

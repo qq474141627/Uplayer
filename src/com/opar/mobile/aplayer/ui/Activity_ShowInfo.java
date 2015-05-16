@@ -7,7 +7,6 @@ import java.util.List;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
@@ -18,6 +17,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
+import com.actionbarsherlock.app.SherlockFragment;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.opar.mobile.uplayer.R;
 import com.opar.mobile.aplayer.beans.ShowBean;
@@ -36,14 +36,16 @@ public class Activity_ShowInfo extends ActivityBase implements OnClickListener, 
     private ViewPager vPager;
     private PageFragmentAdapter adapter;
     private RadioGroup bar_radio;
+	public ShowBean getoBean() {
+		return oBean;
+	}
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_info);
 		oBean = (ShowBean) getIntent().getSerializableExtra("name");
 		initView();
-		new MyThread().start();
-		YoukuLoading.show(this);
 	}
 
 	private void initView() {
@@ -62,9 +64,12 @@ public class Activity_ShowInfo extends ActivityBase implements OnClickListener, 
 		btn_download.setOnClickListener(this);
 		btn_like.setOnClickListener(this);
 		
+		//添加数据
+		setDate();
+		
 		bar_radio=(RadioGroup)findViewById(R.id.bar_radio);
 		bar_radio.setOnCheckedChangeListener(this);
-		List<FragmentBase> list = new ArrayList<FragmentBase>();
+		List<SherlockFragment> list = new ArrayList<SherlockFragment>();
 		list.add(new Fragment_MovieInfo_Pager3());
 		list.add(new Fragment_MovieInfo_Pager4());
 		list.add(new Fragment_MovieInfo_Pager5());
@@ -77,40 +82,17 @@ public class Activity_ShowInfo extends ActivityBase implements OnClickListener, 
         
 	}
 
-
-	Handler handler = new Handler() {
-		public void handleMessage(android.os.Message msg) {
-			YoukuLoading.dismiss();
-			setDate();
-		};
-	};
-
 	private void setDate() {
 		ImageLoader.getInstance().displayImage(oBean.getThumbnail(), show_movie_img);
 		show_movie_area.setText("国家/地区："+oBean.getArea());
 		show_movie_genre.setText("类型："+oBean.getGenre());
-		show_movie_director.setText(oBean.getDirector());
-		show_movie_performer.setText(oBean.getPerformer());
+		show_movie_director.setText("导演："+oBean.getDirector());
+		show_movie_performer.setText("演员："+oBean.getPerformer());
 		btn_play.setText(StringUtils.getViewNum(oBean.getView_count()));
 		btn_download.setText(StringUtils.getViewNum(oBean.getDown_count()));
 		btn_like.setText(StringUtils.getViewNum(oBean.getFavorite_count()));
 		text_favorite_count.setText(StringUtils.getViewNum(oBean.getComment_count())+"人正在观看");
 		setShowScore(show_movie_score, String.valueOf(oBean.getScore()));
-		//更新详情fragment数据
-		adapter.reflash(0, oBean.getDescription());
-		//更新评论数据
-		adapter.reflash(1, XmlUtil.getVid(oBean.getLink()));
-		//更新相关数据
-		adapter.reflash(2, XmlUtil.getVid(oBean.getLink()));
-	}
-
-	class MyThread extends Thread {
-		@Override
-		public void run() {
-			super.run();
-			XmlUtil.getShowInfo(oBean);
-			handler.sendEmptyMessage(1);
-		}
 	}
 
 	@Override

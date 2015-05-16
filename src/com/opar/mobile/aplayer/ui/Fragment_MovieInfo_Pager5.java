@@ -2,9 +2,11 @@ package com.opar.mobile.aplayer.ui;
 
 import java.util.ArrayList;
 
+import com.actionbarsherlock.app.SherlockFragment;
 import com.opar.mobile.aplayer.beans.ShowBean;
 import com.opar.mobile.aplayer.ui.adapter.ShowAdpter;
 import com.opar.mobile.aplayer.util.UplayerConfig;
+import com.opar.mobile.aplayer.xml.XmlUtil;
 import com.opar.mobile.uplayer.R;
 import com.opar.mobile.uplayer.asyc.Get_ShowById_AsyncTask;
 import com.youku.login.widget.YoukuLoading;
@@ -21,11 +23,12 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
-public class Fragment_MovieInfo_Pager5 extends FragmentBase implements OnItemClickListener{
+public class Fragment_MovieInfo_Pager5 extends SherlockFragment implements OnItemClickListener{
     private View view;
     private ListView listView; //展示数据的listview
     private ShowAdpter adapter;  //绑定数据的适配器
 	private String vid;
+	private boolean hasDate;
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -57,6 +60,7 @@ public class Fragment_MovieInfo_Pager5 extends FragmentBase implements OnItemCli
 			YoukuLoading.dismiss();
         	switch (msg.what) {
         	case UplayerConfig.EXEC_NORMOL:
+        		hasDate = true;
 				adapter.addData((ArrayList<ShowBean>)msg.obj);
 				break;
 			case UplayerConfig.NONETWORK:
@@ -77,18 +81,19 @@ public class Fragment_MovieInfo_Pager5 extends FragmentBase implements OnItemCli
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
 	    super.setUserVisibleHint(isVisibleToUser);
-	    if (isVisibleToUser && !TextUtils.isEmpty(vid)) {
-	    	if(adapter.getCount() == 0){
+	    if (isVisibleToUser && isAdded() && !hasDate) {
+	    	if(TextUtils.isEmpty(vid)){
+	    		ShowBean bean = ((Activity_ShowInfo)getActivity()).getoBean();
+	    		if(bean != null){
+	    			vid = XmlUtil.getVid(bean.getLink());
+	    		}
+	    	}
+	    	if(!TextUtils.isEmpty(vid)){
 	    		YoukuLoading.show(getActivity());
 	    		new Get_ShowById_AsyncTask(handler, vid).execute();
 	    	}
 	    } else {
 	    }
-	}
-	
-	@Override
-	public void onLoad(String obj) {
-		vid = obj;
 	}
 	
 }

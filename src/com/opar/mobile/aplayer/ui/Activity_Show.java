@@ -283,7 +283,7 @@ public class Activity_Show extends ActivityBase implements OnItemClickListener
 				break;
 			case UplayerConfig.NONETWORK:
 				UplayerConfig.showTips(R.string.NONETWORK);
-			        break;
+			    break;
 			case UplayerConfig.NO_DATA_RETURN:
 				UplayerConfig.showTips(R.string.NO_DATA_RETURN);
 				break;

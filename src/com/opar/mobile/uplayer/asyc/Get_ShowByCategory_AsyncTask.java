@@ -1,6 +1,6 @@
 package com.opar.mobile.uplayer.asyc;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import com.opar.mobile.aplayer.beans.Parameter;
 import com.opar.mobile.aplayer.beans.ShowBean;
@@ -11,7 +11,7 @@ import com.opar.mobile.aplayer.xml.XmlUtil;
 import android.os.AsyncTask;
 import android.os.Handler;
 
-public class Get_ShowByCategory_AsyncTask extends AsyncTask<String, Void, ArrayList<ShowBean>> {
+public class Get_ShowByCategory_AsyncTask extends AsyncTask<String, Void, List<ShowBean>> {
 
 	private boolean isNetWork;
 	private Handler handler;
@@ -25,7 +25,7 @@ public class Get_ShowByCategory_AsyncTask extends AsyncTask<String, Void, ArrayL
 		this.parameter = parameter;
 	}
 	@Override
-	protected void onPostExecute(ArrayList<ShowBean> result) {
+	protected void onPostExecute(List<ShowBean> result) {
 		// TODO Auto-generated method stub
 		if(!isNetWork){
 			HandlerUtil.sendMsgToHandler(handler, UplayerConfig.NONETWORK);
@@ -43,10 +43,9 @@ public class Get_ShowByCategory_AsyncTask extends AsyncTask<String, Void, ArrayL
 	@Override
 	protected void onCancelled() {}
 	
-	protected ArrayList<ShowBean> doInBackground(String... params){
+	protected List<ShowBean> doInBackground(String... params){
 		if (isNetWork) {
-			ArrayList<ShowBean> arraylist = XmlUtil.getShowByCategory(parameter);
-			return arraylist;
+			return XmlUtil.getShowByIds(XmlUtil.getShowIdsByCategory(parameter));
 		}
 		return null;
 	}

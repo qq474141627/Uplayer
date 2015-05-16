@@ -47,6 +47,28 @@ public class XmlUtil {
 		return JsonUtil.getShowByCategory(HttpsUtil.readJsonFromUrl(string.toString()));
 	}
 	/*
+	 *根据分类查找节目
+	 */
+	public static List<String> getShowIdsByCategory(Parameter p){
+		StringBuffer string=new StringBuffer("https://openapi.youku.com/v2/shows/by_category.json?client_id="+UplayerConfig.getClientId());
+			string.append("&category="+StringUtils.URLEncoder(p.getCategory()));
+        if(!TextUtils.isEmpty(p.getGenre())){
+        	string.append("&genre="+StringUtils.URLEncoder(p.getGenre()));
+		}
+        if(!TextUtils.isEmpty(p.getArea())){
+        	string.append("&area="+StringUtils.URLEncoder(p.getArea()));
+        }
+        if(!TextUtils.isEmpty(p.getRelease_year())){
+        	string.append("&release_year="+StringUtils.URLEncoder(p.getRelease_year()));
+        }
+        if(!TextUtils.isEmpty(p.getOrderby())){
+        	string.append("&orderby="+StringUtils.URLEncoder(p.getOrderby()));
+        }
+        	string.append("&page="+StringUtils.URLEncoder(p.getPage()+""));
+        	
+		return JsonUtil.getShowIdsByCategory(HttpsUtil.readJsonFromUrl(string.toString()));
+	}
+	/*
 	 *根据分类查找专辑
 	 */
 	public static ArrayList<PlaylistBean> getPlaylistByCategory(Parameter p){
@@ -88,106 +110,32 @@ public class XmlUtil {
 		try {
 			String url=HttpsUtil.readJsonFromUrl(string.toString());
 			JSONObject obj=new JSONObject(url);
-				bean.setId(obj.optString("id"));
-				bean.setThumbnail(obj.optString("poster_large"));
-				bean.setName(obj.optString("name"));
-				bean.setLink(obj.optString("play_link"));
-				bean.setEpisode_count(obj.optInt("episode_count"));
-				bean.setEpisode_updated(obj.optInt("episode_updated"));
-				bean.setCategory(obj.optString("category"));
-				bean.setView_count(obj.optInt("view_count"));
-				bean.setPublished(obj.optString("published"));
-				bean.setScore(obj.optDouble("score"));
-				bean.setFavorite_count(obj.optInt("favorite_count"));
-				bean.setDescription(obj.optString("description"));
-				bean.setUp_count(obj.optInt("up_count"));
-				bean.setDown_count(obj.optInt("down_count"));
-				bean.setGenre(obj.optString("genre"));
-				bean.setArea(obj.optString("area"));
-				bean.setView_week_count(obj.optInt("view_week_count"));
-				bean.setComment_count(obj.optInt("comment_count"));
-				if(bean.getCategory().equals("电影")||bean.getCategory().equals("电视剧")){
-					obj=obj.optJSONObject("attr");
-					JSONArray array=obj.optJSONArray("director");
-					if(array!=null){
-						String director="";
-						for(int i=0;i<array.length();i++){
-							director+=array.optJSONObject(i).optString("name")+" ";
-						}
-						bean.setDirector("导演："+director);
-					}
-					array=obj.optJSONArray("performer");
-					if(array!=null){
-						String performer="";
-						for(int i=0;i<array.length();i++){
-							performer+=array.optJSONObject(i).optString("name")+" ";
-						}
-						bean.setPerformer("演员："+performer);
-					}
-				}else if(bean.getCategory().equals("综艺")){
-					obj=obj.optJSONObject("attr");
-					JSONArray array=obj.optJSONArray("host");
-					if(array!=null){
-						String director="";
-						for(int i=0;i<array.length();i++){
-							director+=array.optJSONObject(i).optString("name")+" ";
-						}
-						bean.setDirector("主持人："+director);
-					}
-				}else if(bean.getCategory().equals("动漫")){
-					obj=obj.optJSONObject("attr");
-					JSONArray array=obj.optJSONArray("director");
-					if(array!=null){
-						String director="";
-						for(int i=0;i<array.length();i++){
-							director+=array.optJSONObject(i).optString("name")+" ";
-						}
-						bean.setDirector(director);
-					}
-				}else if(bean.getCategory().equals("音乐")){
-					obj=obj.optJSONObject("attr");
-					JSONArray array=obj.optJSONArray("singer");
-					if(array!=null){
-						String director="";
-						for(int i=0;i<array.length();i++){
-							director+=array.optJSONObject(i).optString("name")+" ";
-						}
-						bean.setDirector("主唱："+director);
-					}
-				}
-				else if(bean.getCategory().equals("纪录片")){
-					obj=obj.optJSONObject("attr");
-					JSONArray array=obj.optJSONArray("director");
-					if(array!=null){
-						String director="";
-						for(int i=0;i<array.length();i++){
-							director+=array.optJSONObject(i).optString("name")+" ";
-						}
-						bean.setDirector("导演："+director);
-					}
-					 array=obj.optJSONArray("host");
-					if(array!=null){
-						String director="";
-						for(int i=0;i<array.length();i++){
-							director+=array.optJSONObject(i).optString("name")+" ";
-						}
-						bean.setPerformer("主持人："+director);
-					}
-				}else if(bean.getCategory().equals("教育")){
-					obj=obj.optJSONObject("attr");
-					JSONArray array=obj.optJSONArray("teacher");
-					if(array!=null){
-						String director="";
-						for(int i=0;i<array.length();i++){
-							director+=array.optJSONObject(i).optString("name")+" ";
-						}
-						bean.setDirector("教师："+director);
-					}
-				}
+			JsonUtil.getShowInfo(obj);	
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+	}
+	/*
+	 *根据多条show_id获取详情
+	 */
+	public static List<ShowBean> getShowByIds(List<String> ids){
+		StringBuffer string=new StringBuffer("https://openapi.youku.com/v2/shows/show_batch.json?client_id="+UplayerConfig.getClientId()+"&show_ids="+StringUtils.join(ids, ","));
+		try {
+			JSONObject obj=new JSONObject(HttpsUtil.readJsonFromUrl(string.toString()));
+			JSONArray array = obj.optJSONArray("shows");
+			List<ShowBean> list = new ArrayList<ShowBean>();
+			for(int i = 0;i<array.length();i++){
+				ShowBean bean = JsonUtil.getShowInfo(array.optJSONObject(i));
+				list.add(bean);
+			}
+			return list;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
 		
 	}
 	/*

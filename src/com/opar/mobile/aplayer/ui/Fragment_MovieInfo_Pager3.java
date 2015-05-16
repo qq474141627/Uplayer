@@ -1,5 +1,7 @@
 package com.opar.mobile.aplayer.ui;
 
+import com.actionbarsherlock.app.SherlockFragment;
+import com.opar.mobile.aplayer.beans.ShowBean;
 import com.opar.mobile.uplayer.R;
 
 import android.app.Activity;
@@ -9,10 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-public class Fragment_MovieInfo_Pager3 extends FragmentBase {
+public class Fragment_MovieInfo_Pager3 extends SherlockFragment {
    private View view;
    private TextView moive_desc;
-   private boolean hasData;
+   private boolean hasDate;
    
    @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,18 @@ public class Fragment_MovieInfo_Pager3 extends FragmentBase {
 		}
 		return view;
 	}
+	
+	@Override
+    public void onResume() {
+        super.onResume();
+        if(!hasDate && isAdded()){
+        	 ShowBean bean = ((Activity_ShowInfo)getActivity()).getoBean();
+     		if(bean != null){
+     			hasDate = true;
+     			moive_desc.setText(bean.getDescription());
+         	}
+        }
+    }
 
 	@Override
 	public void onAttach(Activity activity) {
@@ -35,20 +49,4 @@ public class Fragment_MovieInfo_Pager3 extends FragmentBase {
 		activity = (Activity_ShowInfo) getActivity();
 	}
 	
-	@Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser) {
-        } else {
-        }
-    }
-	
-	@Override
-	public void onLoad(String obj) {
-		if(view != null){
-	    	moive_desc.setText(obj);
-		}
-	}
-
-	    
 }

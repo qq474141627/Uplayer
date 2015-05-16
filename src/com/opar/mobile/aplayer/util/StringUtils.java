@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.TimeZone;
 
 
@@ -186,7 +187,7 @@ public class StringUtils {
 	 * @param separator
 	 * @return
 	 */
-	public static String join(ArrayList<String> array,String separator) {
+	public static String join(List<String> array,String separator) {
 		StringBuffer result = new StringBuffer("");
 		if (array != null && array.size() > 0) {
 			for (String str : array) {
