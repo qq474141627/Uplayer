@@ -55,31 +55,31 @@ public class UplayerConfig {
 	}
 
 	public static String getUserID() {
-		return Youku.getPreference(YoukuConfig.uid);
+		return Youku.getPreference("uid");
 	}
 
 	public static String getUserName() {
-		return Youku.getPreference(YoukuConfig.userName);
+		return Youku.getPreference("userName");
 	}
 
 	public static String getUserPassword() {
-		return Youku.getPreference(YoukuConfig.loginPassword);
+		return Youku.getPreference("loginPassword");
 	}
 
 	public static void saveAccessToken(String access_token) {
-		Youku.savePreference(YoukuConfig.uploadAccessToken, access_token);
+		Youku.savePreference("uploadAccessToken", access_token);
 	}
 
 	public static String getAccessToken() {
-		return Youku.getPreference(YoukuConfig.uploadAccessToken);
+		return Youku.getPreference("uploadAccessToken");
 	}
 
 	public static void saveRefreshToken(String refresh_token) {
-		Youku.savePreference(YoukuConfig.uploadRefreshToken, refresh_token);
+		Youku.savePreference("refresh_token", refresh_token);
 	}
 
 	public static String getRefreshToken() {
-		return Youku.getPreference(YoukuConfig.uploadRefreshToken);
+		return Youku.getPreference("refresh_token");
 	}
 	
 	public static void saveExpires_in(String expires_in) {
