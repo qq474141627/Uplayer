@@ -76,7 +76,7 @@ public class Activity_Search extends SherlockFragmentActivity implements OnClick
 		}else{
 			text_category.setText("全部");
 		}
-		initHistroyKey(dao.getKeys(6));
+		initHistroyKey(dao.getSearchKeys(6));
 		initEditText();
         new Search_HotKey_AsyncTask(handler).execute(category);
         YoukuLoading.show(this);
@@ -201,8 +201,8 @@ public class Activity_Search extends SherlockFragmentActivity implements OnClick
 				search(key);
 			}
 		}else if(v.getId() == R.id.img_clear){
-			dao.delAllKeys();
-	    	initHistroyKey(dao.getKeys(6));
+			dao.delSearchKeys();
+	    	initHistroyKey(dao.getSearchKeys(6));
 		}else if(v.getId() == R.id.text_category){
 			startActivityForResult(new Intent(Activity_Search.this,Dialog_Search_Category.class), 0);
 		}
@@ -211,8 +211,8 @@ public class Activity_Search extends SherlockFragmentActivity implements OnClick
     	//把键盘隐藏起来
     	hideKeyBoard();
     	if (0 >= key.length()) return;
-    	 dao.insertKeys(key);
-    	 initHistroyKey(dao.getKeys(6));
+    	 dao.insertSearchKey(key);
+    	 initHistroyKey(dao.getSearchKeys(6));
     	 Intent intent =new Intent(this,Activity_Search_Show.class);
     	 intent.putExtra("key", key);
     	 intent.putExtra("category", category);

@@ -118,26 +118,10 @@ public class Fragment_Mine extends SherlockFragment	implements OnItemClickListen
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
 		// TODO Auto-generated method stub
-		switch (arg2) {
-		case 0:
-			break;
-        case 1:
-			break;
-        case 2:
-			break;
-        case 3:
-			break;
-        case 4:
-			break;
-        case 5:
-			break;
-        case 6:
-			break;
-        case 7:
-			break;
-		default:
-			break;
+		if(arg2 == 0){
+			startActivity(new Intent(getActivity(),Activity_Show_Save.class));
 		}
+		
 	}
 	@Override
 	public void onClick(View arg0) {

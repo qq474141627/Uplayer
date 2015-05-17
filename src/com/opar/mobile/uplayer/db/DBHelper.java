@@ -34,7 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
 			+ CREATETABLE;
 	private final String CREATE_SAVE_TABLE = "create table "
 			+ TableName.UPlayer_SAVE_TABLENAME
-			+CREATETABLE;
+			+CREATETABLE2;
 	//搜索关键词
 	private final String CREATE_KEYS_TABLE = "create table "
 			+ TableName.UPlayer_KEYS_TABLENAME
@@ -77,7 +77,7 @@ public class DBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub
-		if(newVersion>oldVersion){
+		if(newVersion > oldVersion){
 			//选择你想删除更新哪些表，可以保留部分表数据
 			 db.execSQL("DROP TABLE IF EXISTS  "+TableName.UPlayer_HISTROY_TABLENAME);
 			 db.execSQL("DROP TABLE IF EXISTS  "+TableName.UPlayer_SAVE_TABLENAME);

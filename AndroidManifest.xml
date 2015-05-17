@@ -76,6 +76,11 @@
             android:screenOrientation="portrait">
         </activity>
         <activity
+            android:name="com.opar.mobile.aplayer.ui.Activity_Show_Save"
+            android:configChanges="orientation|keyboard|keyboardHidden|navigation"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
             android:name="com.opar.mobile.aplayer.ui.Activity_Playlist"
             android:configChanges="orientation|keyboard|keyboardHidden|navigation"
             android:screenOrientation="portrait">

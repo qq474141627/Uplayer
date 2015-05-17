@@ -29,6 +29,7 @@ public class HttpsUtil {
 			conn.setHostnameVerifier(new MyHostnameVerifier());
 			conn.connect();
 			int respCode = conn.getResponseCode();
+			Logger.d("respCode --"+respCode);
 			if(respCode==200){
 				InputStream input = conn.getInputStream();
 				result = toString(input);

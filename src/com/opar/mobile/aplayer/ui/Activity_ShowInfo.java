@@ -16,13 +16,17 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.Toast;
 
 import com.actionbarsherlock.app.SherlockFragment;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.opar.mobile.uplayer.R;
+import com.opar.mobile.uplayer.dao.DBHelperDao;
 import com.opar.mobile.aplayer.beans.ShowBean;
 import com.opar.mobile.aplayer.ui.adapter.PageFragmentAdapter;
+import com.opar.mobile.aplayer.util.HandlerUtil;
 import com.opar.mobile.aplayer.util.StringUtils;
+import com.opar.mobile.aplayer.util.UplayerConfig;
 import com.opar.mobile.aplayer.xml.XmlUtil;
 import com.youku.login.widget.YoukuLoading;
 
@@ -45,6 +49,7 @@ public class Activity_ShowInfo extends ActivityBase implements OnClickListener, 
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_show_info);
 		oBean = (ShowBean) getIntent().getSerializableExtra("name");
+		if(oBean == null) return;
 		initView();
 	}
 
@@ -63,7 +68,6 @@ public class Activity_ShowInfo extends ActivityBase implements OnClickListener, 
 		btn_play.setOnClickListener(this);
 		btn_download.setOnClickListener(this);
 		btn_like.setOnClickListener(this);
-		
 		//添加数据
 		setDate();
 		
@@ -83,6 +87,7 @@ public class Activity_ShowInfo extends ActivityBase implements OnClickListener, 
 	}
 
 	private void setDate() {
+		setShowSave();
 		ImageLoader.getInstance().displayImage(oBean.getThumbnail(), show_movie_img);
 		show_movie_area.setText("国家/地区："+oBean.getArea());
 		show_movie_genre.setText("类型："+oBean.getGenre());
@@ -98,6 +103,7 @@ public class Activity_ShowInfo extends ActivityBase implements OnClickListener, 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub ll_play,ll_down,ll_share,ll_save
+		if(oBean == null) return;
 		if(v.getId() == R.id.btn_play){
 			if(oBean.getCategory().equals(getString(R.string.Movies))){
 				Activity_VideoPlayer.startActivity(Activity_ShowInfo.this, 
@@ -115,7 +121,14 @@ public class Activity_ShowInfo extends ActivityBase implements OnClickListener, 
 		}else if(v.getId() == R.id.btn_download){
 			
 		}else if(v.getId() == R.id.btn_like){
-			
+			if(DBHelperDao.getDBHelperDaoInstace().isSaveKey(oBean.getId())){
+				DBHelperDao.getDBHelperDaoInstace().delSaveKey(oBean.getId());
+				//UplayerConfig.showTips("收藏取消");
+			}else{
+				DBHelperDao.getDBHelperDaoInstace().insertSaveKey(oBean.getId());
+				//UplayerConfig.showTips("收藏成功");
+			}
+			setShowSave();
 		}
 			
 	}
@@ -161,6 +174,19 @@ public class Activity_ShowInfo extends ActivityBase implements OnClickListener, 
 			drawableLeft.setBounds(0, 0, drawableLeft.getMinimumWidth(), drawableLeft.getMinimumHeight());
 			drawableRight.setBounds(0, 0, drawableRight.getMinimumWidth(), drawableRight.getMinimumHeight());
 			view.setCompoundDrawables(drawableLeft,null,drawableRight,null);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	}
+	
+	private void setShowSave(){
+		boolean save = DBHelperDao.getDBHelperDaoInstace().isSaveKey(oBean.getId());
+		try {
+			Drawable drawableTop= getResources().getDrawable(save?R.drawable.btn_like_fav:R.drawable.btn_like_select);
+			/// 这一步必须要做,否则不会显示.
+			drawableTop.setBounds(0, 0, drawableTop.getMinimumWidth(), drawableTop.getMinimumHeight());
+			btn_like.setCompoundDrawables(null,drawableTop,null,null);
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

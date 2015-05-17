@@ -1,6 +1,5 @@
 package com.opar.mobile.aplayer.util;
 
-import com.youku.login.sns.util.ConfigUtil;
 import com.youku.login.util.Youku;
 import com.youku.login.util.YoukuUtil;
 
