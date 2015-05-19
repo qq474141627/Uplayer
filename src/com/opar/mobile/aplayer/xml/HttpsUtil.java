@@ -1,6 +1,7 @@
 package com.opar.mobile.aplayer.xml;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -19,7 +20,7 @@ import com.youku.login.util.Logger;
 public class HttpsUtil {
 	public static  String readJsonFromUrl(String path) { 
 		Logger.d("url--"+path);
-		String result = null;
+		String result = "";
 		try{
 			URL url = new URL(path);
 			SSLContext sslctxt = SSLContext.getInstance("TLS");
@@ -27,42 +28,56 @@ public class HttpsUtil {
 			HttpsURLConnection conn = (HttpsURLConnection)url.openConnection();
 			conn.setSSLSocketFactory(sslctxt.getSocketFactory());
 			conn.setHostnameVerifier(new MyHostnameVerifier());
-			conn.connect();
+			//conn.setRequestMethod("POST"); 
+			conn.setRequestProperty("Charset", "UTF-8");
+			//conn.setRequestProperty("Connection", "Keep-Alive");
+			conn.setConnectTimeout(10* 1000);
 			int respCode = conn.getResponseCode();
 			Logger.d("respCode --"+respCode);
 			if(respCode==200){
-				InputStream input = conn.getInputStream();
-				result = toString(input);
-				input.close();
+	             BufferedReader bufferReader = new BufferedReader(new InputStreamReader(conn.getInputStream())); 
+	             String inputLine  = "";  
+	             while((inputLine = bufferReader.readLine()) != null){  
+	            	 result += inputLine + "\n"; 
+	            	 Logger.d("inputLine--"+inputLine);
+	             }  
 			}
 			conn.disconnect();
 			}catch(Exception e){
 				e.printStackTrace();
+				Logger.d("e--"+e.getMessage());
 			}
 		Logger.d("result--"+result);
+		Logger.d("length"+result.length());
 		  return result;
 	      } 
 	
-	private static String toString(InputStream input){
-		
-		String content = null;
-		try{
-		InputStreamReader ir = new InputStreamReader(input);
-		BufferedReader br = new BufferedReader(ir);
-		
-		StringBuilder sbuff = new StringBuilder();
-		while(null != br){
-			String temp = br.readLine();
-			if(null == temp)break;
-			sbuff.append(temp).append(System.getProperty("line.separator"));
-		}
-		
-		content = sbuff.toString();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return content;
-	}	
+	
+	private static String ConvertStream2Json(InputStream inputStream)
+    {
+        String jsonStr = "";
+        // ByteArrayOutputStream相当于内存输出流
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        byte[] buffer = new byte[1024];
+        int len = 0;
+        // 将输入流转移到内存输出流中
+        try
+        {
+            while ((len = inputStream.read(buffer, 0, buffer.length)) != -1)
+            {
+                out.write(buffer, 0, len);
+            }
+            // 将内存流转换为字符串
+            jsonStr = new String(out.toByteArray());
+        }
+        catch (Exception e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return jsonStr;
+    }
+
 	static class MyX509TrustManager implements X509TrustManager{
 
 		@Override

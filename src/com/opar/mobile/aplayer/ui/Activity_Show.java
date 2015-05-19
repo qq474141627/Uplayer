@@ -43,6 +43,7 @@ import com.opar.mobile.aplayer.ui.adapter.Show_Selection_Adapter;
 import com.opar.mobile.aplayer.ui.adapter.ShowAdpter;
 import com.opar.mobile.aplayer.util.StringUtils;
 import com.opar.mobile.aplayer.util.UplayerConfig;
+import com.opar.mobile.aplayer.xml.XmlUtil;
 import com.opar.mobile.uplayer.R;
 import com.opar.mobile.uplayer.asyc.Get_ShowByCategory_AsyncTask;
 import com.opar.mobile.uplayer.view.FlowLayout;
@@ -606,7 +607,7 @@ public class Activity_Show extends ActivityBase implements OnItemClickListener
 			return;
 		}
 		if(!YoukuLoading.isShowing()){
-			if(adapterList.get(position).getCount()%20!=0){
+			if(adapterList.get(position).getCount()%XmlUtil.showNum!=0){
 				UplayerConfig.showTips(R.string.NO_MORE_DATE);
 				return;
 			}

@@ -21,9 +21,11 @@ import com.opar.mobile.aplayer.beans.VideoParameter;
 import com.opar.mobile.aplayer.util.StringUtils;
 import com.opar.mobile.aplayer.util.UplayerConfig;
 import com.opar.mobile.aplayer.xml.JsonUtil;
+import com.youku.login.util.Logger;
 
 public class XmlUtil {
-	
+	public static final int showNum = 10;
+	public static final int videoNum = 20;
 	/*
 	 *根据分类查找节目
 	 */
@@ -43,7 +45,7 @@ public class XmlUtil {
         	string.append("&orderby="+StringUtils.URLEncoder(p.getOrderby()));
         }
         	string.append("&page="+StringUtils.URLEncoder(p.getPage()+""));
-        	
+        	string.append("&count="+showNum);
 		return JsonUtil.getShowByCategory(HttpsUtil.readJsonFromUrl(string.toString()));
 	}
 	/*
@@ -65,7 +67,7 @@ public class XmlUtil {
         	string.append("&orderby="+StringUtils.URLEncoder(p.getOrderby()));
         }
         	string.append("&page="+StringUtils.URLEncoder(p.getPage()+""));
-        	
+        	string.append("&count="+showNum);
 		return JsonUtil.getShowIdsByCategory(HttpsUtil.readJsonFromUrl(string.toString()));
 	}
 	/*
@@ -123,7 +125,8 @@ public class XmlUtil {
 	public static List<ShowBean> getShowByIds(List<String> ids){
 		StringBuffer string=new StringBuffer("https://openapi.youku.com/v2/shows/show_batch.json?client_id="+UplayerConfig.getClientId()+"&show_ids="+StringUtils.join(ids, ","));
 		try {
-			JSONObject obj=new JSONObject(HttpsUtil.readJsonFromUrl(string.toString()));
+			String result = HttpsUtil.readJsonFromUrl(string.toString());
+			JSONObject obj=new JSONObject(result);
 			JSONArray array = obj.optJSONArray("shows");
 			List<ShowBean> list = new ArrayList<ShowBean>();
 			for(int i = 0;i<array.length();i++){
@@ -134,6 +137,7 @@ public class XmlUtil {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			Logger.d("error -- "+e.getMessage());
 		}
 		return null;
 		

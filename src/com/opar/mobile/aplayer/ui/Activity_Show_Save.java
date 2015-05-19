@@ -8,31 +8,46 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
 
 import com.opar.mobile.aplayer.beans.ShowBean;
 import com.opar.mobile.aplayer.ui.adapter.ShowAdpter;
 import com.opar.mobile.aplayer.util.UplayerConfig;
+import com.opar.mobile.aplayer.xml.XmlUtil;
 import com.opar.mobile.uplayer.R;
 import com.opar.mobile.uplayer.asyc.Get_ShowByIds_AsyncTask;
 import com.opar.mobile.uplayer.dao.DBHelperDao;
 import com.youku.login.widget.YoukuLoading;
 
-public class Activity_Show_Save extends ActivityBase implements OnItemClickListener {
+public class Activity_Show_Save extends ActivityBase implements OnItemClickListener,OnScrollListener {
 	private ListView listView; //展示数据的listview
     private ShowAdpter adapter;  //绑定数据的适配器
+    private int page = 1;
+    private int maxPage = 1;
+    private List<String> ids;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.listview);
-		setTitle(getString(R.string.mine_save));
+		ids = DBHelperDao.getDBHelperDaoInstace().getSaveKeys();
+		String title = getString(R.string.mine_save);
+		if(ids!=null && ids.size()>0){
+			title+="(共"+ids.size()+"部)";
+		}
+		setTitle(title);
 		listView=(ListView)findViewById(R.id.listView);
 		adapter=new ShowAdpter(this);
 		listView.setAdapter(adapter);
 		listView.setOnItemClickListener(this);
-		getDatas();
+		listView.setOnScrollListener(this);
+		if(ids!=null && ids.size()>0){
+			maxPage = (ids.size()-1)/XmlUtil.showNum+1;
+			getDatas();
+		}
 	}
 	
 	@Override
@@ -48,6 +63,7 @@ public class Activity_Show_Save extends ActivityBase implements OnItemClickListe
 			YoukuLoading.dismiss();
         	switch (msg.what) {
         	case UplayerConfig.EXEC_NORMOL:
+        		page ++;
         		adapter.addData((ArrayList<ShowBean>)msg.obj);
 				break;
 			case UplayerConfig.NONETWORK:
@@ -67,10 +83,30 @@ public class Activity_Show_Save extends ActivityBase implements OnItemClickListe
 	
 	private void getDatas(){
 		if(!YoukuLoading.isShowing()){
-			List<String> ids = DBHelperDao.getDBHelperDaoInstace().getSaveKeys();
-			if(ids!=null && ids.size()>0){
-				new Get_ShowByIds_AsyncTask(handler,ids).execute();
+			if(page <= maxPage){
+				List<String> list = ids.subList((page-1)*XmlUtil.showNum, ids.size()>page*XmlUtil.showNum?page*XmlUtil.showNum:ids.size());
+				new Get_ShowByIds_AsyncTask(handler,list).execute();
 				YoukuLoading.show(this);
+			}
+		}
+	}
+
+	private int firstVisibleItem,visibleItemCount,totalItemCount;
+	@Override
+	public void onScroll(AbsListView view, int firstVisibleItem,
+			int visibleItemCount, int totalItemCount) {
+		// TODO Auto-generated method stub
+		this.firstVisibleItem = firstVisibleItem;
+		this.visibleItemCount = visibleItemCount;
+		this.totalItemCount = totalItemCount;
+	}
+
+	@Override
+	public void onScrollStateChanged(AbsListView arg0, int scrollState) {
+		// TODO Auto-generated method stub
+		if(scrollState == SCROLL_STATE_IDLE && firstVisibleItem > 0){
+			if(firstVisibleItem + visibleItemCount == totalItemCount && !YoukuLoading.isShowing()){
+				getDatas();
 			}
 		}
 	}
