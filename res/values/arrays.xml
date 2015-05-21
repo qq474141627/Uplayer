@@ -2,13 +2,13 @@
 <resources>
     <string-array name="mine">
         <item >收藏</item>
-        <item >离线视频</item>
+        <item >正在下载</item>
+        <item >下载完成</item>
         <item >播放记录</item>
         <item >本地视频</item>
         <item >消息</item>
         <item >好友</item>
         <item >我的订阅</item>
-        <item >好友动态</item>
     </string-array>
     
     <string-array name="classify_big">

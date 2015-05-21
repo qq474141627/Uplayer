@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.opar.mobile.aplayer.ui.adapter.CachedVideoAdapter;
 import com.opar.mobile.uplayer.R;
 import com.youku.service.download.DownloadInfo;
 import com.youku.service.download.DownloadManager;
@@ -29,16 +30,11 @@ import com.youku.service.download.DownloadManager;
  * 简单展示已经缓存的视频，用户可定制自己的界面
  *
  */
-public class CachedActivity extends Activity {
-	//展示视频信息的ListView
-	private ListView lv;
-	
+public class CachedActivity extends Activity implements OnItemClickListener{
 	//数据Adapter
 	private CachedVideoAdapter adapter;
-	
 	//通过DownloadManager获取下载视频列表
 	private DownloadManager downloadManager;
-	
 	//记录当前已经下载的视频列表
 	private ArrayList<DownloadInfo> downloadedList_show = new ArrayList<DownloadInfo>();
 	
@@ -46,25 +42,12 @@ public class CachedActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
 		setContentView(R.layout.activity_cache);
-		
-		lv = (ListView)this.findViewById(R.id.list);
-
-		adapter = new CachedVideoAdapter(this);
-		lv.setAdapter(adapter);
-		lv.setOnItemClickListener(listener );
-		
-	}
-	
-	@Override
-	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-		//获取已经下载的视频数据		
+		ListView lv = (ListView)this.findViewById(R.id.list);
 		initData();
-		//同志数据更新
-		adapter.notifyDataSetChanged();		
+		adapter = new CachedVideoAdapter(this,downloadedList_show);
+		lv.setAdapter(adapter);
+		lv.setOnItemClickListener(this);
 	}
 	
 	/**
@@ -86,84 +69,20 @@ public class CachedActivity extends Activity {
 	}
 	
 	@Override
-	protected void onDestroy() {
+	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 		// TODO Auto-generated method stub
-		downloadedList_show.clear();
-		finish();
-		super.onDestroy();
-	}
-	
-	/**
-	 * 简单示例：用户展示视频信息的Adapter
-	 * 第三方需要自己完善
-	 *
-	 */
-	class CachedVideoAdapter extends BaseAdapter{
-		LayoutInflater inflater;
+		//获取点击item表示视频信息
+		DownloadInfo info = downloadedList_show.get(arg2);
 		
-		public CachedVideoAdapter(Context context){
-			inflater = LayoutInflater.from(context);
-		}
-
-		@Override
-		public int getCount() {
-			// TODO Auto-generated method stub
-			return downloadedList_show.size();
-		}
-
-		@Override
-		public Object getItem(int position) {
-			// TODO Auto-generated method stub
-			return downloadedList_show.get(position).title;
-		}
-
-		@Override
-		public long getItemId(int position) {
-			// TODO Auto-generated method stub
-			return position;
-		}
-
-		@SuppressLint("ViewHolder")
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			// TODO Auto-generated method stub
-			View view = inflater.inflate(R.layout.item_cached, null);
-			//简单展示视频信息的名称
-			TextView tv_title = (TextView) view.findViewById(R.id.video_title);
-			//视频信息实体类用DownloadInfo表示
-			DownloadInfo info = downloadedList_show.get(position);
-			
-			tv_title.setText(info.title);
-			
-			return view;
-		}
+		//跳转到播放界面进行播放，用户可以修改为自己的播放界面
+		Intent intent = new Intent(CachedActivity.this, PlayerActivity.class);
 		
+		//点击缓存视频播放时需要传递给播放界面的两个参数
+		intent.putExtra("isFromLocal", true);		
+		intent.putExtra("video_id", info.videoid);
+		
+		startActivity(intent);
 	}
-	
-	/**
-	 * 通过单击已经下载过的视频进行播放
-	 */
-	private AdapterView.OnItemClickListener listener = new OnItemClickListener() {
-
-		@Override
-		public void onItemClick(AdapterView<?> parent, View view, int position,
-				long id) {
-			// TODO Auto-generated method stub
-			//获取点击item表示视频信息
-			DownloadInfo info = downloadedList_show.get(position);
-			
-			//跳转到播放界面进行播放，用户可以修改为自己的播放界面
-			Intent intent = new Intent(CachedActivity.this, PlayerActivity.class);
-			
-			//点击缓存视频播放时需要传递给播放界面的两个参数
-			intent.putExtra("isFromLocal", true);		
-			intent.putExtra("video_id", info.videoid);
-			
-			startActivity(intent);
-			
-		}
-
-	};
 	
 
 }

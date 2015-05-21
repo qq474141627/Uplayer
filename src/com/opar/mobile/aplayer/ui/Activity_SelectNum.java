@@ -38,7 +38,7 @@ public class Activity_SelectNum extends ActivityBase implements OnItemClickListe
 	  }else{
 		  setTitle(oBean.getName());
 	  }
-	  adapter = new MovieinfoAdpter( this);
+	  adapter = new MovieinfoAdpter(this,getIntent().getBooleanExtra("download", false));
 	  setContentView(R.layout.activity_selectnum);
 		listView = (ListView)findViewById(R.id.listView);
 		listView.setAdapter(adapter);

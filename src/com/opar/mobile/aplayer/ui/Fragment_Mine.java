@@ -10,6 +10,8 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.opar.mobile.aplayer.beans.UserBean;
 import com.opar.mobile.aplayer.util.UplayerConfig;
 import com.opar.mobile.aplayer.xml.XmlUtil;
+import com.opar.mobile.uplayer.CachedActivity;
+import com.opar.mobile.uplayer.CachingActivity;
 import com.opar.mobile.uplayer.R;
 import com.youku.login.service.ILogin.ICallBack;
 import com.youku.login.service.LoginException;
@@ -39,9 +41,9 @@ import android.widget.TextView;
 public class Fragment_Mine extends SherlockFragment	implements OnItemClickListener,OnClickListener,ICallBack{
 	private View view;
 	private int[] icon_my = new int[]{
-			R.drawable.icon_mine_collect,R.drawable.icon_mine_download,R.drawable.icon_mine_record,
+			R.drawable.icon_mine_collect,R.drawable.icon_mine_download,R.drawable.icon_mine_dynamic,R.drawable.icon_mine_record,
 			R.drawable.icon_mine_card,R.drawable.icon_mine_msg,R.drawable.icon_mine_friend,
-			R.drawable.icon_mine_subscribe,R.drawable.icon_mine_dynamic
+			R.drawable.icon_mine_subscribe
 		};
 	private String[] title_my = null;
 	private GridView grid;
@@ -118,8 +120,13 @@ public class Fragment_Mine extends SherlockFragment	implements OnItemClickListen
 	public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
 		// TODO Auto-generated method stub
+		//0收藏 1正在下载 2下载完成 3播放记录 4本地视频 5消息 6好友7我的订阅
 		if(arg2 == 0){
 			startActivity(new Intent(getActivity(),Activity_Show_Save.class));
+		}else if(arg2 == 1){
+			startActivity(new Intent(getActivity(),CachingActivity.class));
+		}else if(arg2 == 2){
+			startActivity(new Intent(getActivity(),CachedActivity.class));
 		}
 		
 	}

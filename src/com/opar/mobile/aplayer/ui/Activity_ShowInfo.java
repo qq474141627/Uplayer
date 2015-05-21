@@ -115,11 +115,16 @@ public class Activity_ShowInfo extends ActivityBase implements OnClickListener, 
 			}else{
 				Intent intent=new Intent();
 				intent.putExtra("movie", oBean);
+				intent.putExtra("download", false);
 				intent.setClass(Activity_ShowInfo.this, Activity_SelectNum.class);
 				startActivity(intent);
 			}
 		}else if(v.getId() == R.id.btn_download){
-			
+			Intent intent=new Intent();
+			intent.putExtra("movie", oBean);
+			intent.putExtra("download", true);
+			intent.setClass(Activity_ShowInfo.this, Activity_SelectNum.class);
+			startActivity(intent);
 		}else if(v.getId() == R.id.btn_like){
 			if(DBHelperDao.getDBHelperDaoInstace().isSaveKey(oBean.getId())){
 				DBHelperDao.getDBHelperDaoInstace().delSaveKey(oBean.getId());
