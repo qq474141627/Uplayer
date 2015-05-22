@@ -12,8 +12,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import com.opar.mobile.aplayer.util.UITimer.OnUITimer;
 
 import com.opar.mobile.aplayer.ui.adapter.CachingVideoAdapter;
+import com.opar.mobile.aplayer.util.UITimer;
 import com.opar.mobile.uplayer.R;
 import com.youku.service.download.DownloadInfo;
 import com.youku.service.download.DownloadManager;
@@ -47,16 +49,37 @@ public class CachingActivity extends Activity implements OnItemClickListener{
 		
 	};
 	
+	private UITimer timer = new UITimer(2000, new OnUITimer() {
+		@Override
+		public void onTimer() {
+			// TODO Auto-generated method stub
+			handler.sendEmptyMessageDelayed(0, 200);
+		}
+	});
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		initData();
 		setContentView(R.layout.activity_caching);
+		setTitle("正在缓存");
 		ListView lv = (ListView)this.findViewById(R.id.list);
-		initData();
 		adapter = new CachingVideoAdapter(this,downloadingList_show);
 		lv.setAdapter(adapter);
+	}
+	
+	@Override
+	public void onResume(){
+		super.onResume();
+		if(timer!=null)
+		   timer.start();
+	}
+	
+	@Override
+	public void onPause(){
+		super.onPause();
+		if(timer!=null)
+		   timer.stop();
 	}
 	
 	/**
