@@ -1,10 +1,14 @@
 package com.opar.mobile.uplayer.ui;
 
+import java.io.File;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Environment;
 
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
+import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -13,6 +17,7 @@ import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 import com.nostra13.universalimageloader.core.display.RoundedBitmapDisplayer;
 import com.nostra13.universalimageloader.core.download.BaseImageDownloader;
+import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.opar.mobile.uplayer.util.FileUtil;
 import com.youku.login.base.YoukuLoginOperator;
 import com.youku.player.YoukuPlayerBaseApplication;
@@ -35,7 +40,6 @@ public class MyApplication extends YoukuPlayerBaseApplication {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		mApplication = this;
-		init();
 		initImagerLoder();
 		YoukuLoginOperator.initYoukuLogin(this);
 	}
@@ -74,12 +78,6 @@ public class MyApplication extends YoukuPlayerBaseApplication {
 		return null;
 	}
 
-	private void init() {
-		//创建缓存目录
-		FileUtil.createIfNoExists(OPLAYER_CACHE_BASE);
-		FileUtil.createIfNoExists(OPLAYER_VIDEO_THUMB);
-	}
-
 	public static MyApplication getApplication() {
 		return mApplication;
 	}
@@ -92,41 +90,51 @@ public class MyApplication extends YoukuPlayerBaseApplication {
 	public void destory() {
 		mApplication = null;
 	}
+	
+//	private void initImagerLoder()
+//	{
+//		File cacheDir = StorageUtils.getCacheDirectory(context);  
+//		ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(getApplication());
+//		// 设定线程等级比普通低一点
+//		builder.threadPriority(Thread.NORM_PRIORITY - 2);
+//		// 设定内存图片缓存大小限制，不设置默认为屏幕的宽高
+//        builder.memoryCacheExtraOptions(480, 800);
+//        builder.diskCacheExtraOptions(480, 800, null);
+//		// 设定内存缓存为弱缓存
+//        builder.memoryCache(new WeakMemoryCache());
+//        // 缓存到内存的最大数据
+//        builder.memoryCacheSize(8 * 1024 * 1024);
+//        // 文件数量
+//        builder.discCacheFileCount(1000);
+//        builder.defaultDisplayImageOptions(DisplayImageOptions.createSimple());
+//        // 设定只保存同一尺寸的图片在内存
+//        builder.denyCacheImageMultipleSizesInMemory();
+//        // 设定缓存的SDcard目录，UnlimitDiscCache速度最快
+//        builder.discCache(new UnlimitedDiscCache(cacheDir));
+//        // 设定网络连接超时 timeout: 10s 读取网络连接超时read timeout: 60s
+//        builder.imageDownloader(new BaseImageDownloader(getApplication(), 10000, 20000));
+//        builder.discCacheFileNameGenerator(new Md5FileNameGenerator());
+//        builder.tasksProcessingOrder(QueueProcessingType.LIFO);
+//        builder.build();
+//       ImageLoader.getInstance().init(builder.build());
+//       
+//	}
+	
 	private void initImagerLoder()
 	{
 		DisplayImageOptions  options = new DisplayImageOptions.Builder()            
-		// 开启内存缓存
-		.cacheInMemory(true)                                             
-         // 开启SDCard缓存
-		//.cacheOnDisc(true)    
-		//设置圆角
-        //.displayer(new RoundedBitmapDisplayer(5))  
-		// 图片加载好后渐入的动画时间
-        .displayer(new FadeInBitmapDisplayer(100))
+        .cacheInMemory()                                             
+        .cacheOnDisc()                                                   
+        //.displayer(new RoundedBitmapDisplayer(5))       
         .build();
-		
-		ImageLoaderConfiguration.Builder builder = new ImageLoaderConfiguration.Builder(getApplication());
-		// 设定线程等级比普通低一点
-		builder.threadPriority(Thread.NORM_PRIORITY - 2);
-		// 设定内存图片缓存大小限制，不设置默认为屏幕的宽高
-        builder.memoryCacheExtraOptions(480, 800);
-		// 设定内存缓存为弱缓存
-        builder.memoryCache(new WeakMemoryCache());
-        // 缓存到内存的最大数据
-        builder.memoryCacheSize(8 * 1024 * 1024);
-        // 文件数量
-        builder.discCacheFileCount(1000);
-        builder.defaultDisplayImageOptions(options);
-        // 设定只保存同一尺寸的图片在内存
-        builder.denyCacheImageMultipleSizesInMemory();
-        // 设定缓存的SDcard目录，UnlimitDiscCache速度最快
-        //builder.discCache(new UnlimitedDiscCache(cacheDir));
-     // 设定网络连接超时 timeout: 10s 读取网络连接超时read timeout: 60s
-        builder.imageDownloader(new BaseImageDownloader(getApplication(), 10000, 60000));
-        builder.discCacheFileNameGenerator(new Md5FileNameGenerator());
-        builder.tasksProcessingOrder(QueueProcessingType.LIFO);
-        builder.build();
-       ImageLoader.getInstance().init(builder.build());
+     ImageLoaderConfiguration config2 = new ImageLoaderConfiguration.Builder(getApplicationContext())
+        .threadPriority(Thread.NORM_PRIORITY - 2)
+        .defaultDisplayImageOptions(options)
+        .denyCacheImageMultipleSizesInMemory()
+        .discCacheFileNameGenerator(new Md5FileNameGenerator())
+        .tasksProcessingOrder(QueueProcessingType.LIFO)
+        .build();
+       ImageLoader.getInstance().init(config2);
        
 	}
 	

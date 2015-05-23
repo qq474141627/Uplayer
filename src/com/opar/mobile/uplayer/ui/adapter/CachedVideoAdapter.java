@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.opar.mobile.uplayer.R;
 import com.opar.mobile.uplayer.util.StringUtils;
+import com.youku.login.util.Logger;
 import com.youku.service.download.DownloadInfo;
 
 
@@ -69,7 +70,8 @@ public class CachedVideoAdapter extends BaseAdapter{
 		getView.caching_name.setText(info.title);	
 		//保存下载大小，方便计算下载速度
 		getView.caching_state.setVisibility(8);
-		getView.caching_progress.setVisibility(8);
+		//getView.caching_progress.setVisibility(8);
+		getView.caching_progress.setText(StringUtils.generateTime(info.seconds));
 		getView.caching_size.setText(StringUtils.generateFileSize(info.size));
 		ImageLoader.getInstance().displayImage(info.imgUrl,getView.caching_img);
 		return convertView;

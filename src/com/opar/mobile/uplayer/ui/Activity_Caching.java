@@ -26,7 +26,7 @@ import com.youku.service.download.DownloadManager;
  *
  */
 
-public class Activity_Caching extends Activity implements OnItemClickListener{
+public class Activity_Caching extends ActivityBase implements OnItemClickListener{
 	//通过DownloadManager获取下载视频列表
 	private DownloadManager downloadManager;
 	//记录当前下载中的视频列表

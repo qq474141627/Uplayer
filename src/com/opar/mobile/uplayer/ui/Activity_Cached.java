@@ -22,7 +22,7 @@ import com.youku.service.download.DownloadManager;
  * 简单展示已经缓存的视频，用户可定制自己的界面
  *
  */
-public class Activity_Cached extends Activity implements OnItemClickListener{
+public class Activity_Cached extends ActivityBase implements OnItemClickListener{
 	//数据Adapter
 	private CachedVideoAdapter adapter;
 	//通过DownloadManager获取下载视频列表

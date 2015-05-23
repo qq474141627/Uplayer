@@ -4,9 +4,11 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.opar.mobile.uplayer.R;
 import com.opar.mobile.uplayer.util.StringUtils;
 import com.youku.service.download.DownloadInfo;
@@ -90,7 +94,8 @@ public class CachingVideoAdapter extends BaseAdapter{
 			getView.caching_progress.setText(String.format("%.1f", info.progress)+"%");
 			getView.caching_size.setText(StringUtils.generateFileSize(info.downloadedSize)
 					+"/"+StringUtils.generateFileSize(info.size));
-			ImageLoader.getInstance().displayImage(info.imgUrl,getView.caching_img);
+			//loadImage 解决屏幕闪的问题
+			ImageLoader.getInstance().displayImage(info.imgUrl, getView.caching_img);
 			return convertView;
 		}
 		private class GetView {
