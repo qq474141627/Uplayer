@@ -1,6 +1,6 @@
 package com.opar.mobile.uplayer.db;
 
-import com.opar.mobile.aplayer.ui.MyApplication;
+import com.opar.mobile.uplayer.ui.MyApplication;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

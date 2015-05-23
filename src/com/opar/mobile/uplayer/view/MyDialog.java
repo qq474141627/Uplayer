@@ -2,8 +2,8 @@ package com.opar.mobile.uplayer.view;
 
 import java.util.List;
 
-import com.opar.mobile.aplayer.ui.adapter.SearchKeyAdapter;
 import com.opar.mobile.uplayer.R;
+import com.opar.mobile.uplayer.ui.adapter.SearchKeyAdapter;
 
 import android.app.Dialog;
 import android.content.Context;

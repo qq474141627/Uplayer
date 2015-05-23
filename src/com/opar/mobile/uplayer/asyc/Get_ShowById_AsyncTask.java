@@ -2,11 +2,11 @@ package com.opar.mobile.uplayer.asyc;
 
 import java.util.ArrayList;
 
-import com.opar.mobile.aplayer.beans.Parameter;
-import com.opar.mobile.aplayer.beans.VideoBean;
-import com.opar.mobile.aplayer.util.HandlerUtil;
-import com.opar.mobile.aplayer.util.UplayerConfig;
-import com.opar.mobile.aplayer.xml.XmlUtil;
+import com.opar.mobile.uplayer.beans.Parameter;
+import com.opar.mobile.uplayer.beans.VideoBean;
+import com.opar.mobile.uplayer.util.HandlerUtil;
+import com.opar.mobile.uplayer.util.UplayerConfig;
+import com.opar.mobile.uplayer.xml.XmlUtil;
 import com.youku.login.util.Logger;
 
 import android.os.AsyncTask;

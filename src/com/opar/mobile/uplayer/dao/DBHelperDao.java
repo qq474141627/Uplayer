@@ -8,9 +8,9 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.opar.mobile.aplayer.util.UplayerConfig;
 import com.opar.mobile.uplayer.db.DBHelper;
 import com.opar.mobile.uplayer.db.TableName;
+import com.opar.mobile.uplayer.util.UplayerConfig;
 
 public class DBHelperDao {
 

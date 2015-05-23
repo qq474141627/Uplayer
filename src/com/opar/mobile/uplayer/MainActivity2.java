@@ -8,9 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.opar.mobile.aplayer.ui.Activity_Cached;
-import com.opar.mobile.aplayer.ui.Activity_Caching;
 import com.opar.mobile.uplayer.R;
+import com.opar.mobile.uplayer.ui.Activity_Cached;
+import com.opar.mobile.uplayer.ui.Activity_Caching;
 import com.youku.login.service.ILogin.ICallBack;
 import com.youku.login.service.LoginException;
 import com.youku.player.ApiManager;
