@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.opar.mobile.aplayer.ui.Activity_Cached;
+import com.opar.mobile.aplayer.ui.Activity_Caching;
 import com.opar.mobile.uplayer.R;
 import com.youku.login.service.ILogin.ICallBack;
 import com.youku.login.service.LoginException;
@@ -101,7 +103,7 @@ public class MainActivity2 extends Activity implements View.OnClickListener{
 	 * 跳转到已经下载的界面
 	 */
 	private void go2DownloadedPage(){
-		Intent i = new Intent(this,CachedActivity.class);
+		Intent i = new Intent(this,Activity_Cached.class);
 		startActivity(i);
 		
 	}
@@ -110,7 +112,7 @@ public class MainActivity2 extends Activity implements View.OnClickListener{
 	 * 跳转到正在下载的界面
 	 */
 	private void go2DownloadingPage(){
-		Intent i = new Intent(this,CachingActivity.class);
+		Intent i = new Intent(this,Activity_Caching.class);
 		startActivity(i);
 		
 	}	

@@ -10,8 +10,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.opar.mobile.aplayer.beans.UserBean;
 import com.opar.mobile.aplayer.util.UplayerConfig;
 import com.opar.mobile.aplayer.xml.XmlUtil;
-import com.opar.mobile.uplayer.CachedActivity;
-import com.opar.mobile.uplayer.CachingActivity;
 import com.opar.mobile.uplayer.R;
 import com.youku.login.service.ILogin.ICallBack;
 import com.youku.login.service.LoginException;
@@ -124,9 +122,9 @@ public class Fragment_Mine extends SherlockFragment	implements OnItemClickListen
 		if(arg2 == 0){
 			startActivity(new Intent(getActivity(),Activity_Show_Save.class));
 		}else if(arg2 == 1){
-			startActivity(new Intent(getActivity(),CachingActivity.class));
+			startActivity(new Intent(getActivity(),Activity_Caching.class));
 		}else if(arg2 == 2){
-			startActivity(new Intent(getActivity(),CachedActivity.class));
+			startActivity(new Intent(getActivity(),Activity_Cached.class));
 		}
 		
 	}

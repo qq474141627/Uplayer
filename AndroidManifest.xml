@@ -139,14 +139,12 @@
         </activity>
         <!-- 已经缓存的视频界面demo -->
         <activity
-            android:name="com.opar.mobile.uplayer.CachedActivity"
-            android:launchMode="singleTask"            
-            />
+            android:name="com.opar.mobile.uplayer.ui.Activity_Cached"
+            android:launchMode="singleTask"/>
         <!-- 正在缓存的视频展示界面demo -->
         <activity
-            android:name="com.opar.mobile.uplayer.CachingActivity"
-            android:launchMode="singleTask"
-            />        
+            android:name="com.opar.mobile.uplayer.ui.Activity_Caching"
+            android:launchMode="singleTask"/>        
         <!-- 以下两个为下载时需要的添加的Service -->
        <service
             android:name="com.youku.service.download.DownloadService"
